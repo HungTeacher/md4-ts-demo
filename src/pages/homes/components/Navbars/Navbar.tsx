@@ -10,11 +10,11 @@ function Navbar() {
     const [banners, setBanners] = useState([
         {
             id: 1,
-            title: "freeship"
+            title: "Download the app to access everything Nike. Get Your Great"
         },
         {
             id: 2,
-            title: "sale"
+            title: "Free shipping. Get discount 50% for nike vip member"
         }
     ])
     const navigate = useNavigate()
@@ -40,7 +40,7 @@ function Navbar() {
            </div>
            <div className="nav-container">
                <div className="logo" onClick={() => navigate("/")}>
-                   <img src="https://static.vecteezy.com/system/resources/previews/010/994/232/non_2x/nike-logo-black-clothes-design-icon-abstract-football-illustration-with-white-background-free-vector.jpg" alt="logo"/>
+                   <img src="https://images.unsplash.com/photo-1617611413968-537a2ba4986d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmlrZSUyMGxvZ298ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="logo"/>
                </div>
                <div className="middle-nav">
                    <span>Men</span>

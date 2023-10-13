@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import './search.scss';
 
 type OffcanvasPlacement = "top" | "bottom" | "start" | "end"
 
@@ -16,9 +17,9 @@ function OffCanvasExample({ name, placement }: OffcanvasExampleProps) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow} className="me-2">
+            <button variant="primary" onClick={handleShow} className="me-2">
                 <i className="fa-solid fa-magnifying-glass"></i>
-            </Button>
+            </button>
             <Offcanvas show={show} onHide={handleClose} placement={placement}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title className="search_top">

@@ -1,4 +1,5 @@
 
+import './dropdown.scss';
 
 function DropdownLogout() {
     return (

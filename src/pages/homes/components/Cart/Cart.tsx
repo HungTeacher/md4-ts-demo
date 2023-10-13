@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {Popconfirm} from "antd";
 import {useNavigate} from "react-router-dom";
+import './cart.scss';
 
 function OffCanvasExample({name, ...props}) {
     const [show, setShow] = useState(false);
@@ -12,9 +13,9 @@ function OffCanvasExample({name, ...props}) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow} className="me-2">
+            <button variant="primary" onClick={handleShow} className="me-2">
                 <i className="fa-solid fa-cart-shopping"></i>
-            </Button>
+            </button>
             <Offcanvas show={show} onHide={handleClose} {...props}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Your cart</Offcanvas.Title>
