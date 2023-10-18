@@ -5,5 +5,8 @@ export default {
         return await axios.post(import.meta.env.VITE_APP_SERVER_HOST_API + "users", newUser)
             .then(res => res)
             .catch(err => err)
+    },
+    login: async (data: any) => {
+        return await axios.post(import.meta.env.VITE_APP_SERVER_HOST_API + "users/login", data)
     }
 }

@@ -35,6 +35,7 @@ export default function Register() {
                 <h1><strong>Please register to receive discount...</strong><br />Let's get you set up!</h1>
             </div>
             <div className="register-right">
+                <p>Create Account <br/>Already Account? <a href="/login">Login Here</a></p>
                 <form onSubmit={handleFormSubmit}>
                     <div className="form_control">
                         <input type="text" name="userName" id="userName" placeholder="Enter your username"/>
