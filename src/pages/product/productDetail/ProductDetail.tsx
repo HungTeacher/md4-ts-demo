@@ -1,9 +1,58 @@
+import { useEffect, useState} from 'react'
+import api from '@/services/api'
+import { useParams} from "react-router-dom";
 
-
+interface Product {
+    id: string,
+    name: string,
+    avatar: string,
+    price: number,
+    des: string,
+    categoryId: number,
+    categoryName: string,
+    updateAt: Date
+}
 export default function ProductDetail() {
+    const { id } = useParams()
+    const [product, setProduct] = useState({})
+    const [quantity, setQuantity] = useState(1)
+    console.log("product Detail: ", product)
+    useEffect(() => {
+        if(id) {
+            api.productApi.findById(id)
+                .then((res : any) => {
+                    if(res.status == 200) {
+                        setProduct(res.data.data)
+                    }
+                })
+                .catch((err : any) => {
+                    throw new Error(err)
+                })
+        }
+    }, [id])
     return (
-        <div>
-            <h1>This is product detail</h1>
+        <div className="productDetail-container">
+            <div className="product-gallery">
+                <img style={{marginTop: "10px"}} src={(product as Product).avatar} alt=""/>
+            </div>
+             <div className="product-essential">
+                 <header className="product-header">
+                     <h1 className="product-title">{(product as Product).name}</h1>
+                 </header>
+                 <p className="product-price">{(product as Product).price}đ</p>
+                 <p className="product-description">{(product as Product).des}</p>
+                 <p className="product-quantity-label">QUANTITY</p>
+                 <div className="product-quantity">
+                     <button>
+                         <span className="material-symbols-outlined">remove</span>
+                     </button>
+                     <span>{quantity}</span>
+                     <button>
+                         <span className="material-symbols-outlined">add</span>
+                     </button>
+                 </div>
+                 <button className="addToCart-button">Add to cart</button>
+             </div>
         </div>
     )
 }
