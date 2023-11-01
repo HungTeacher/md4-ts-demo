@@ -1,6 +1,8 @@
 import { useEffect, useState} from 'react'
 import api from '@/services/api'
 import { useParams} from "react-router-dom";
+import './productDetail.scss';
+import { message } from 'antd';
 
 interface Product {
     id: string,
@@ -30,10 +32,42 @@ export default function ProductDetail() {
                 })
         }
     }, [id])
+
+    function handleAddToCart(productId: string, quantity: number) {
+        let carts: CartItem[] = JSON.parse(localStorage.getItem("carts") ?? "[]");
+        if (carts.length == 0) {
+            // cart rỗng
+            carts.push({
+                productId,
+                quantity
+            });
+            message.success("addToCartSuccess");
+        } else {
+            // cart có sản phẩm
+            let flag: boolean = false;
+            carts = carts.map(item => {
+                if (item.productId == productId) {
+                    message.success("addToCartSuccess");
+                    item.quantity += quantity
+                    flag = true;
+                }
+                return item
+            })
+            if (!flag) {
+                carts.push({
+                    productId,
+                    quantity
+                })
+                message.success("addToCartSuccess");
+            }
+        }
+        localStorage.setItem("carts", JSON.stringify(carts)) // save to local
+    }
+
     return (
         <div className="productDetail-container">
             <div className="product-gallery">
-                <img style={{marginTop: "10px"}} src={(product as Product).avatar} alt=""/>
+                <img src={(product as Product).avatar} alt=""/>
             </div>
              <div className="product-essential">
                  <header className="product-header">
@@ -51,7 +85,7 @@ export default function ProductDetail() {
                          <span className="material-symbols-outlined">add</span>
                      </button>
                  </div>
-                 <button className="addToCart-button">Add to cart</button>
+                 <button className='addToCart-button' onClick={() => handleAddToCart((product as Product).id, quantity)}>Add to cart</button>
              </div>
         </div>
     )

@@ -1,4 +1,3 @@
-
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import "./search.scss"
 import { useState } from 'react';

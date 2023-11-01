@@ -2,6 +2,7 @@ import { useState} from 'react'
 import { message } from 'antd'
 import api from '@/services/api'
 import {useNavigate} from "react-router-dom";
+import './login.scss';
 
 export default function Login () {
     const navigate = useNavigate()

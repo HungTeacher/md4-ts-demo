@@ -1,6 +1,7 @@
 
 import { message} from "antd";
 import api from '@/services/api'
+import './register.scss';
 
 export default function Register() {
     const handleFormSubmit = async (e: any) => {
